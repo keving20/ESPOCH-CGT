@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="../templates/empresaBod/main.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="libreriaEncabezado">  
+        <!-- GLOBAL STYLES -->
+        <h:outputStylesheet library="css" name="lineIcons.css"/>
+        <!--END GLOBAL STYLES -->
+        <h:outputScript library="js/chart-master" name="Chart.js" />
+    </ui:define>
+    <ui:define name="title">
+        <h:outputText value="Bolsa de Empleos - Empresa"></h:outputText>
+    </ui:define>
+
+    <ui:define name="content">                        
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right" style="font-size: 19px;"></i> Panel de Control - Empresa</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+
+                    <div class="row mtbox">
+                        <div class="col-md-2 col-md-offset-1 box1">
+                            <h:link outcome="/admin/perfilEmpresa/listarPerfil.xhtml" title="Consultar.">
+                                <span class="fa fa-pencil-square-o" style="font-size: 90px;"></span>
+                            </h:link>
+                            <h3>Mi Perfil</h3>                            
+                        </div>
+
+                        <div class="col-md-2 col-md-offset-1 box1">
+                            <h:link outcome="/admin/anuncios/listarAnuncios.xhtml" title="Consultar.">
+                                <span class="fa fa-users" aria-hidden="true" style="font-size: 90px;"></span>
+                            </h:link>
+                            <h3>Mis Anuncios</h3>                            
+                        </div>
+                        
+                        <div class="col-md-2 col-md-offset-1 box1">
+                            <h:link outcome="/admin/solicitudesEmpresa/listarSolicitudes.xhtml" title="Consultar.">
+                                <span class="fa fa-file-text" aria-hidden="true" style="font-size: 90px;"></span>
+                            </h:link>
+                            <h3>Solicitudes</h3>                            
+                        </div>
+                    </div><!-- /row mt -->	
+                </div>
+            </div>
+
+        </section><!--/wrapper -->
+    </ui:define>
+</ui:composition> 

@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- sidebar menu start-->
+
+    <ul class="sidebar-menu nav" id="nav-accordion">
+        <p class="centered"><h:link styleClass="active" outcome="/admin/indexEmpresa.xhtml"><p:graphicImage title="Inicio"  value="/resources/img/espoch.png"  styleClass="img-circle" width="130" /></h:link></p>
+
+        <li class="mt">
+            <h:link outcome="/admin/indexEmpresa.xhtml">
+                <i class="fa fa-dashboard"></i>
+                <span>PANEL DE CONTROL</span>
+            </h:link>
+        </li>
+
+         <li class="sub-menu">
+            <a href="javascript:;" >
+                <i class="fa fa-pencil-square-o"></i>
+                <span>PERFIL EMPRESA</span>
+            </a>
+            <ul class="sub" >
+                <li><h:link value="Usuario" outcome="/admin/perfilEmpresa/listarPerfil.xhtml"/></li>
+                 <li><h:link value="Datos de Empresa" outcome="/admin/perfilEmpresa/editPerfil.xhtml"/></li>
+            </ul>
+        </li>
+        
+         <li class="sub-menu">
+            <a href="javascript:;" >
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span>MIS ANUNCIOS</span>
+            </a>
+            <ul class="sub" >
+                <li><h:link value="Listar Anuncios" outcome="/admin/anuncios/listarAnuncios.xhtml"/></li>
+             </ul>
+        </li>
+        
+          <li class="sub-menu">
+            <a href="javascript:;" >
+                <i class="fa fa-file-text" aria-hidden="true"></i>
+                <span>SOLICITUDES</span>
+            </a>
+            <ul class="sub" >
+                <li><h:link value="Visualizar Solicitudes" outcome="/admin/solicitudesEmpresa/listarSolicitudes.xhtml"/></li>
+             </ul>
+        </li>
+
+
+    </ul>
+    <!-- sidebar menu end-->       
+</ui:composition>

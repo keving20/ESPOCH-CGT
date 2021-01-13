@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="../../templates/adminBod/main.xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <ui:define name="libreriaEncabezado">  
+        <!-- GLOBAL STYLES -->
+        <h:outputStylesheet library="css" name="MoneAdmin.css"/>
+        <!--END GLOBAL STYLES -->
+        <!-- PAGE LEVEL STYLES -->
+        <h:outputStylesheet library="dataTables" name="dataTables.bootstrap.css"/>
+    </ui:define>
+    <ui:define name="title">
+        <h:outputText value="Sistema Experto"></h:outputText>
+    </ui:define>
+    <ui:define name="content">                        
+        <section class="wrapper site-min-height">       
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="panel panel-myPanel">
+
+                        <div class="panel-heading centered">
+                            <h3><header  style="font-size: 30px; color: #F1F2F7">CONSULTAS EN LA BASE DE CONOCIMIENTO</header></h3>
+
+                        </div>      
+
+                        <div class="row mt">
+
+
+
+                            <h:form id="frmColor">       
+
+                                <p:panel>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <p:growl id="growl" life="2000" />
+
+                                            <center><p:commandButton value="Iniciar Consulta" id="inicio" update="growl" rendered="" action="#{c_consulta.cargarRegresion(c_consulta.regla)}"  style="margin-right:20px;" styleClass="ui-priority-primary" /></center> 
+
+                                            <center>
+                                                <h:outputText  style="font-size: 2em" value="Escoja un Hecho u Regla:     "/> <br> </br>
+                                                <p:selectOneMenu id="cedula" value="#{c_consulta.regla}" style="width: 235px">
+                                                    <f:selectItems itemLabel="¿Es un #{col2.hipotesis} ?" itemValue="#{col2.hipotesis}"  value="#{c_regla.listaRegla}" var="col2"/>
+                                                </p:selectOneMenu>
+                                                <br> </br>
+                                                <h:commandButton value="INICIAR" id="regresion" action="#{c_consulta.cargarRegresion(c_consulta.regla)}"    />
+                                                 <br> </br>
+                                                <p:panel rendered="#{c_consulta.mostrar==false}">
+                                                    
+                                                    <h3>#{c_consulta.objAntecedente2.descripcion}</h3>
+                                                    <br></br>
+
+                                                    <h:commandButton rendered="#{c_consulta.mostrarRegre==true}" value="SI" id="SI" action="#{c_consulta.ingresarRegre(c_consulta.result=true)}"  style="margin-right:20px;"  />
+                                                    <h:commandButton rendered="#{c_consulta.mostrarRegre==true}" value="NO" id="NO" action="#{c_consulta.noingresarRegre(c_consulta.result=false)}"    />
+                                                </p:panel> 
+                                            </center> 
+                                        </div>
+                                    </div>
+
+
+                                </p:panel>
+                            </h:form >
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section><!--/wrapper -->
+    </ui:define>
+    <ui:define name="libreriaPie">  
+        <h:outputScript library="dataTables" name="jquery.dataTables.js" />
+        <h:outputScript library="dataTables" name="dataTables.bootstrap.js" />
+        <script>
+            $(document).ready(function () {
+                $('#myDataTables').dataTable();
+            });</script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+    </ui:define>
+</ui:composition>        

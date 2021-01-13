@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition>
+        <div class="row">
+            <div class="col-lg-12">
+                <div data-backdrop="static" class="modal fade" id="dialogModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-Width-register">
+                        <div class="modal-content">
+                            <div class="modal-header">                                
+                                <h:form>
+                                    <h:commandLink  onclick="$('#dialogModificarUsuario').modal('hide')" type="reset" styleClass="close">
+                                        ×
+                                        <p:ajax update=":frmModificarUsuario" resetValues="true" />
+                                    </h:commandLink>
+                                </h:form>
+                                <h4 class="modal-title" id="H4"> Actualizar Registro</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h:form class="form-horizontal" id="frmModificarUsuario" rendered="#{c_usuario.objUsuarioSel != null}">
+                                    <fieldset>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <h:outputLabel value="Cédula:" for="txtCedula" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:inputMask id="txtCedula" 
+                                                             styleClass="form-control" 
+                                                             value="#{c_usuario.objUsuarioSel.cedula}" 
+                                                             title="Cédula" required="true" 
+                                                             requiredMessage="La Cédula es requerida!" 
+                                                             validatorMessage="El código debe ser de 10 dígitos." 
+                                                             mask="9999999999" style="width:150px"  />  
+                                            </div>
+                                        </div>             <!-- Text input-->
+                                        <div class="form-group">                                            
+                                            <h:outputLabel value="Nombre:" for="txtNombre" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:inputText id="txtNombre" styleClass="form-control" value="#{c_usuario.objUsuarioSel.nombre}" title="Nombre" required="true" requiredMessage="Se requiere un Nombre!" validatorMessage="El Nombre debe tener minimo 4 caracteres.">
+                                                 <f:validateLength minimum="3" maximum="20"/>
+                                                </p:inputText>     
+                                            </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">                                            
+                                            <h:outputLabel value="Apellido:" for="txtApellido" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                               <p:inputText id="Apellido" styleClass="form-control" value="#{c_usuario.objUsuarioSel.apellido}" title="Apellido" required="true" requiredMessage="Se requiere un Apellido!" validatorMessage="El Apellido debe tener minimo 4 caracteres." >
+                                                <f:validateLength minimum="3" maximum="20"/>
+                                                </p:inputText>   
+                                            </div>
+                                        </div>
+
+                                        <!-- Text input-->
+                                        <div class="form-group">                                            
+                                            <h:outputLabel value="Clave:" for="txtClave" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                     <p:inputText id="txtClave" styleClass="form-control" value="#{c_usuario.objUsuarioSel.clave}" title="Clave" required="true" requiredMessage="Se requiere una Clave!" validatorMessage="La clave debe contener mínimo 5 Caracteres." >
+                                                 <f:validateLength minimum="5" maximum="20"/>
+                                                </p:inputText>   
+
+                                            </div>
+                                        </div>
+                                      
+
+                                        <!-- Button (Double) -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="button1id"></label>
+                                            <div class="col-md-8">
+                                                <div class="modal-footer">
+                                                    <p:commandLink actionListener="#{c_usuario.modificarUsuario()}" update="frmModificarUsuario,:frmListaUsuario,:mensajes" oncomplete="handleSubmit1(args, 'dialogModificarUsuario');"  styleClass="btn btn-success" title="Aceptar">                                                        
+                                                        <i class="fa fa-save"></i> Aceptar 
+                                                    </p:commandLink>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ui:composition>
+</html>
+

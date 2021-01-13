@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header bg-primary">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <center>
+        <h:link outcome="/admin/indexAdmin.xhtml" styleClass="logo" title="Inicio" ><center><b>ESCUELA DE GESTIÓN DEL TRANSPORTE - BOLSA DE EMPLEOS </b></center></h:link>
+        <!--logo end-->
+        </center>
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+           
+            <ul class="nav top-menu">
+           
+                             
+                           
+                <li class="dropdown">
+                      <a class="dropdown-toggle"  data-toggle="dropdown" href="#" title="Mis datos" >
+                        #{LoginBean.objUsuario.nombre} #{LoginBean.objUsuario.apellido} <i class="fa fa-user "></i> <i class="fa fa-chevron-down " style="font-size: 10px;"></i>
+                      </a>
+
+                    <ul class="dropdown-menu extended1 dropdown-user">
+                        <div class="notify-arrow1 notify-arrow-green"></div>
+                      
+                        <li>      
+                            <h:form>
+                                <p:commandLink actionListener="#{LoginBean.logout()}" styleClass="linkCerraSesion" oncomplete="logout(xhr, status, args)" title="Salir">
+                                    <i class="fa fa-sign-out"></i> Cerrar Sesión
+                                </p:commandLink>
+                            </h:form>
+
+                    
+
+                </li>
+                <!--END ADMIN SETTINGS -->
+            </ul>
+                    </li>
+                </ul>
+            <!--  notification end -->
+        </div>
+    </header>
+    <!--header end-->
+</ui:composition>
+

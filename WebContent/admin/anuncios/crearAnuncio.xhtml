@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="modal fade" id="dialogCrearAnuncio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-Width-register">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h:form>
+                                    <h:commandLink  onclick="$('#dialogCrearAnuncio').modal('hide')" type="reset" styleClass="close">
+                                        × 
+                                        <p:ajax update=":frmCrearAnuncio" resetValues="true" />
+                                    </h:commandLink>
+                                </h:form>
+                                <h4 class="modal-title" id="H4"> Nuevo Anuncio</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h:form styleClass="form-horizontal" id="frmCrearAnuncio">
+                                    <fieldset>
+                                        
+                                         <!-- Text input-->
+                                        <div class="form-group">                                            
+                                            <h:outputLabel value="Anuncio:" for="txtAnuncio" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:inputText id="txtAnuncio" styleClass="form-control" value="#{c_anuncios.objAnuncios.nombre_oferta}" title="Anuncio" required="true" requiredMessage="Se requiere una descripción del Anuncio!" validatorMessage="El Anuncio debe tener minimo 10 caracteres.">
+                                                 <f:validateLength minimum="10" maximum="50"/>
+                                                </p:inputText>   
+                                           
+                                            </div>
+                                        </div>
+                                        
+                                                                                  
+                                         <!-- Text input-->
+                                        <div class="form-group">
+                                            <h:outputLabel value="Remuneración" for="txtRemuneracion" styleClass="col-md-4 control-label"/>
+                                            <div class="col-md-8">                                                
+                                                <p:inputMask id="txtRemuneracion" 
+                                                             styleClass="form-control" 
+                                                             value="#{c_anuncios.objAnuncios.remuneracion}" 
+                                                             title="Remuneración" required="true" 
+                                                             requiredMessage="La Remuneración es requerida!" 
+                                                             validatorMessage="El valor debe estar entre 0.00 y 2000.00" 
+                                                             mask="9999.99" style="width:150px"  />  
+                                            </div>
+                                        </div>
+                                        
+                                             <!-- Text input-->
+                                        <div class="form-group">                                            
+                                            <h:outputLabel value="Actividades:" for="txtActividades" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:inputText id="txtActividades" styleClass="form-control" value="#{c_anuncios.objAnuncios.actividades}" title="Actividades" required="true" requiredMessage="Se requiere una descripción de las Actividades!" validatorMessage="La descripción debe tener minimo 5 caracteres.">
+                                                 <f:validateLength minimum="5" maximum="50"/>
+                                                </p:inputText>   
+                                           
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Text input-->
+                                        <div class="form-group">                                            
+                                            <h:outputLabel value="Ubicación:" for="txtUbicacion" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:inputText id="txtUbicacion" styleClass="form-control" value="#{c_anuncios.objAnuncios.ubicacion}" title="Ubicacion" required="true" requiredMessage="Se requiere una Ubicación Para la Oferta" validatorMessage="La ubicación debe tener mínimo 5 caracteres.">
+                                                 <f:validateLength minimum="5" maximum="50"/>
+                                                </p:inputText>   
+                                           
+                                            </div>
+                                        </div>
+
+                                       
+                                                                                                                           
+
+                                        <!-- Button (Double) -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="button1id"></label>
+                                            <div class="col-md-8">
+                                                <div class="modal-footer">
+                                                    <p:commandLink  actionListener="#{c_anuncios.insertarAnuncio()}" update="frmCrearAnuncio,:frmListaAnuncio,:mensajes" oncomplete="handleSubmit1(args, 'dialogCrearAnuncio');" styleClass="btn btn-success" title="Aceptar">
+                                                        <i class="fa fa-save"></i> Aceptar
+                                                    </p:commandLink>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" title="Cancelar"><i class="fa fa-remove"></i> Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ui:composition>
+</html>

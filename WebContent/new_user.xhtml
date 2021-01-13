@@ -1,0 +1,129 @@
+
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:h="http://java.sun.com/jsf/html"
+                 xmlns:f="http://java.sun.com/jsf/core"
+                 template="/templates/login/loginTemple.xhtml"
+                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                 xmlns:p="http://primefaces.org/ui"> 
+
+    <ui:define name="title">
+        <h:outputText value="Iniciar Sesión"></h:outputText>
+    </ui:define>
+
+    <ui:define name="content"> 
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+            <p:graphicImage name="img/ajax-loader.gif" />
+        </p:dialog>
+        
+            
+            <br></br><br></br><br></br>
+            
+            <div id="login-page">
+            <div class="container">	  	
+                <h:form styleClass="form-login">
+                    <h2 class="form-login-heading">Crear una Nueva Cuenta <br/>     
+                        
+                       
+                         <a class="linkRegistrar" href="login.xhtml" style="font-size: 12px;color:#ffffff; ">
+                            Iniciar Sesión 
+                        </a><br/>
+                        <a class="linkRegistrar" href="index.xhtml" style="font-size: 12px;color:#ffffff; ">
+                            Regresar a la Página Principal  
+                        </a>
+                    </h2>
+                    <div class="login-wrap">
+                        
+                         <div class="form-group">
+                            <div class="">
+                                <div class="input-group">
+                                     <div class="form-group">
+                                            <h:outputLabel value="CÉDULA:" for="txtCedula" styleClass="col-md-4 control-label"/>
+                                            <div class="col-md-8">                                                
+                                                <p:inputMask id="txtCedula" 
+                                                             styleClass="form-control" 
+                                                             value="#{c_usuario.objUsuario.cedula}" 
+                                                             title="Cédula" required="true" 
+                                                             requiredMessage="La Cédula es requerida!" 
+                                                             validatorMessage="El código debe ser de 10 dígitos." 
+                                                             mask="9999999999" style="width:150px"  />  
+                                            </div>
+                                       </div>
+                                    <br></br> <hr></hr>
+                                   <!-- Text input-->
+                                        <div class="form-group">                                            
+                                            <h:outputLabel value="NOMBRE:" for="txtNombre" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:inputText id="txtNombre" styleClass="form-control" value="#{c_usuario.objUsuario.nombre}" title="Nombre" required="true" requiredMessage="Se requiere un Nombre!" validatorMessage="El Nombre debe tener minimo 4 caracteres.">
+                                                 <f:validateLength minimum="3" maximum="20"/>
+                                                </p:inputText>   
+                                           
+                                            </div>
+                                        </div>
+                                   
+                                   <hr></hr>
+                                     <!-- Text input-->
+                                        <div class="form-group">
+                                            <h:outputLabel value="APELLIDO:" for="txtApellido" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:inputText id="Apellido" styleClass="form-control" value="#{c_usuario.objUsuario.apellido}" title="Apellido" required="true" requiredMessage="Se requiere un Apellido!" validatorMessage="El Apellido debe tener minimo 4 caracteres." >
+                                                <f:validateLength minimum="3" maximum="20"/>
+                                                </p:inputText>   
+                                               
+                                            </div>
+                                        </div>
+                                    
+                                </div>
+                                <hr></hr>
+                                   <div class="form-group">                                            
+                                            <h:outputLabel value="CONTRASEÑA:" for="txtClave" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:password id="txtClave" styleClass="form-control" value="#{c_usuario.objUsuario.clave}" title="Clave"  feedback="true" required="true" requiredMessage="Se requiere una Clave!" validatorMessage="La clave debe contener mínimo 5 Caracteres." >
+                                                 <f:validateLength minimum="5" maximum="20"/>
+                                                </p:password>   
+                                               
+                                            </div>
+                                        </div>
+                                <hr></hr><br></br><hr></hr>
+                                  <h:outputLabel value="TIPO DE CUENTA:"  styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <p:selectOneButton id="tipo" required="true" value="#{c_usuario.objUsuario.objTipousuario.id_tipousuario}" requiredMessage="Elija el Tipo de Cuenta">
+                                                    <f:selectItem itemLabel="Usuario" itemValue="2"  />
+                                               
+                                                <f:selectItem itemLabel="Empresa"  itemValue="3" />
+                                               
+                                                 </p:selectOneButton>   
+                                               
+                                            </div>
+                                
+                                <hr></hr><br></br>
+                            </div>
+                        </div>
+    <!-- Text input-->
+                                     
+                     
+    <p:commandLink id="btnIniciar" actionListener="#{c_usuario.insertarUser()}" oncomplete=""  update=":mensajes"
+                                      styleClass="btn btn-theme btn-block" >
+                            <i class="fa fa-plus"></i> Crear Cuenta
+                        </p:commandLink>
+                        <p:defaultCommand target="btnIniciar" />
+            
+                      
+                      
+
+                    </div>                
+                </h:form>
+
+            </div>
+        </div>
+ <script>
+     redirect = function() {       
+          window.location.href = "/BOLSA_EMPLEO/index.xhtml";
+        }   
+       
+    }  ;
+</script> 
+       
+    
+    </ui:define>
+</ui:composition>

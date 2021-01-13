@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition>
+        <div class="row">
+            <div class="col-lg-12">
+                <div data-backdrop="static" class="modal fade" id="dialogEliminarAnuncio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-Width-view">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h:form>
+                                    <h:commandLink  onclick="$('#dialogEliminarAnuncio').modal('hide')" type="reset" styleClass="close">
+                                        × 
+                                        <p:ajax update=":frmEliminarAnuncio" resetValues="true" />
+                                    </h:commandLink>
+                                </h:form>
+                                <h4 class="modal-title" id="H4"> Eliminar Anuncio</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-contenido">
+                                    <h:form styleClass="form-horizontal" id="frmEliminarAnuncio">
+                                        <fieldset>
+                                            <h:outputText value="¿Está seguro que desea eliminar el Anuncio: #{c_anuncios.objAnunciosSel.nombre_oferta} ?"/>
+                                            <hr/>
+                                            <!-- Button (Double) -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="button1id"></label>
+                                                <div class="col-md-8">
+                                                    <div class="modal-footer">
+                                                        <p:commandLink  actionListener="#{c_anuncios.eliminarAnuncio()}" update="frmEliminarAnuncio,:frmListaAnuncio,:mensajes" oncomplete="handleSubmit(args, 'dialogEliminarAnuncio');" styleClass="btn btn-success" title="Si">
+                                                            <i class="fa fa-trash-o"></i> Si
+                                                        </p:commandLink>
+                                                        <h:commandLink  onclick="$('#dialogEliminarAnuncio').modal('hide')" type="reset" styleClass="btn btn-danger" title="No">
+                                                            <i class="fa fa-remove"></i> No 
+                                                            <p:ajax update="frmEliminarAnuncio" resetValues="true" />
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ui:composition>
+</html>
